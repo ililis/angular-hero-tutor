@@ -1,8 +1,40 @@
-<h2>{{ hero.name | uppercase }} Details</h2>
-<div><span>id: </span>{{ hero.id }}</div>
-<div><span>name: </span>{{ hero.name }}</div>
+<h2>{{ singlehero.name | uppercase }} Details</h2>
+<div><span>id: </span>{{ singlehero.id }}</div>
+<div><span>name: </span>{{ singlehero.name }}</div>
 
 <div>
   <label for="name">Hero name: </label>
-  <input id="name" [(ngModel)]="hero.name" placeholder="name" />
+  <input id="name" [(ngModel)]="singlehero.name" placeholder="name" />
 </div>
+
+<h2>My Heroes</h2>
+<ul class="heroes" *ngIf="singlehero.name == 'Windstorm'">
+  <li *ngFor="let hero of heroes">
+    <button
+      type="button"
+      (click)="onSelect(hero)"
+      [class.selected]="hero === selectedHero"
+    >
+      <span class="badge">{{ hero.id }}</span>
+      <span class="name">{{ hero.name }}</span>
+    </button>
+    <div class="herodetails" *ngIf="selectedHero && selectedHero == hero">
+      <h2>{{ selectedHero.name | uppercase }} Details</h2>
+      <div>id: {{ selectedHero.id }}</div>
+      <div>
+        <label for="hero-name">Hero name: </label>
+        <input
+          id="hero-name"
+          [(ngModel)]="selectedHero.name"
+          placeholder="name"
+        />
+      </div>
+    </div>
+  </li>
+</ul>
+
+<div *ngFor="let hero of heroes; let i = index">
+  {{ i + 1 }} - {{ hero.name }}
+</div>
+
+<!-- hero.name == "Tornado" -->
