@@ -37,4 +37,17 @@
   {{ i + 1 }} - {{ hero.name }}
 </div>
 
-<!-- hero.name == "Tornado" -->
+<h2>My Heroes</h2>
+<ul class="heroes" *ngIf="singlehero.name == 'Windstorm'">
+  <li *ngFor="let hero of heroes">
+    <button
+      type="button"
+      (click)="onSelect(hero)"
+      [class.selected]="hero === selectedHero"
+    >
+      <span class="badge">{{ hero.id }}</span>
+      <span class="name">{{ hero.name }}</span>
+    </button>
+    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+  </li>
+</ul>
