@@ -6,7 +6,7 @@
   <label for="name">Hero name: </label>
   <input id="name" [(ngModel)]="singlehero.name" placeholder="name" />
 </div>
-
+<!-- 
 <h2>My Heroes</h2>
 <ul class="heroes" *ngIf="singlehero.name == 'Windstorm'">
   <li *ngFor="let hero of heroes">
@@ -31,11 +31,11 @@
       </div>
     </div>
   </li>
-</ul>
-
+</ul> -->
+<!-- 
 <div *ngFor="let hero of heroes; let i = index">
   {{ i + 1 }} - {{ hero.name }}
-</div>
+</div> -->
 
 <h2>My Heroes</h2>
 <ul class="heroes" *ngIf="singlehero.name == 'Windstorm'">
@@ -48,6 +48,9 @@
       <span class="badge">{{ hero.id }}</span>
       <span class="name">{{ hero.name }}</span>
     </button>
-    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+    <app-hero-detail
+      [hero]="selectedHero"
+      *ngIf="hero === selectedHero"
+    ></app-hero-detail>
   </li>
 </ul>
